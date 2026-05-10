@@ -155,17 +155,19 @@ new Typed('#typed', {
     cursorChar: '|',
 });
 
-// ── Navbar: scroll opacity + active link highlight ───────
-const navbar   = document.getElementById('navbar');
+// ── Navbar: scroll glow + active link highlight ──────────
+const navPill  = document.getElementById('navPill');
 const navLinks = document.querySelectorAll('.nav-link:not(.mobile-nav-link)');
 const sections = document.querySelectorAll('section[id]');
 
 function onScroll() {
-    // Darken navbar on scroll
+    // Add glow shadow when scrolled
     if (window.scrollY > 40) {
-        navbar.style.background = 'rgba(5, 9, 20, 0.96)';
+        navPill.style.boxShadow   = '0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(99,102,241,0.12)';
+        navPill.style.borderColor = 'rgba(255,255,255,0.14)';
     } else {
-        navbar.style.background = 'rgba(5, 9, 20, 0.75)';
+        navPill.style.boxShadow   = '';
+        navPill.style.borderColor = '';
     }
 
     // Active section highlight

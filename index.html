@@ -49,44 +49,46 @@
     <!-- ══════════════════════════════════════════
          NAVIGATION
     ══════════════════════════════════════════ -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="#home" class="text-xl font-bold gradient-text tracking-wider">FM</a>
+    <nav id="navbar" class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+        <div id="navPill" class="nav-pill w-full max-w-4xl">
+            <div class="flex items-center justify-between h-14 px-5">
+                <a href="#home" class="text-lg font-bold gradient-text tracking-wider">FM</a>
 
                 <!-- Desktop Links -->
-                <div class="hidden md:flex items-center gap-7">
+                <div class="hidden md:flex items-center gap-1">
                     <a href="#about"      class="nav-link">About</a>
                     <a href="#skills"     class="nav-link">Skills</a>
                     <a href="#experience" class="nav-link">Experience</a>
                     <a href="#projects"   class="nav-link">Projects</a>
                     <a href="#education"  class="nav-link">Education</a>
                     <a href="#contact"    class="nav-link">Contact</a>
-                    <a href="MD_Fahim_Munshi_CV.pdf" download class="btn-primary text-sm px-5 py-2">
-                        <i class="fas fa-download mr-2"></i>CV
-                    </a>
                 </div>
 
-                <!-- Mobile Toggle -->
-                <button id="menuBtn" class="md:hidden text-slate-300 hover:text-white transition-colors">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden border-t border-white/5">
-            <div class="px-3 py-3 flex flex-col gap-0.5">
-                <a href="#about"      class="mobile-nav-link"><i class="fas fa-user"></i>About</a>
-                <a href="#skills"     class="mobile-nav-link"><i class="fas fa-code"></i>Skills</a>
-                <a href="#experience" class="mobile-nav-link"><i class="fas fa-briefcase"></i>Experience</a>
-                <a href="#projects"   class="mobile-nav-link"><i class="fas fa-folder-open"></i>Projects</a>
-                <a href="#education"  class="mobile-nav-link"><i class="fas fa-graduation-cap"></i>Education</a>
-                <a href="#contact"    class="mobile-nav-link"><i class="fas fa-envelope"></i>Contact</a>
-                <div class="mt-2 pt-2 border-t border-white/5">
-                    <a href="MD_Fahim_Munshi_CV.pdf" download class="btn-primary w-full justify-center text-sm py-2.5">
-                        <i class="fas fa-download mr-2"></i>Download CV
+                <!-- CV + Mobile Toggle -->
+                <div class="flex items-center gap-3">
+                    <a href="MD_Fahim_Munshi_CV.pdf" download class="hidden md:inline-flex btn-primary text-sm px-5 py-2">
+                        <i class="fas fa-download mr-2"></i>CV
                     </a>
+                    <button id="menuBtn" class="md:hidden text-slate-300 hover:text-white transition-colors p-1">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-t border-white/5">
+                <div class="px-3 py-3 flex flex-col gap-0.5">
+                    <a href="#about"      class="mobile-nav-link"><i class="fas fa-user"></i>About</a>
+                    <a href="#skills"     class="mobile-nav-link"><i class="fas fa-code"></i>Skills</a>
+                    <a href="#experience" class="mobile-nav-link"><i class="fas fa-briefcase"></i>Experience</a>
+                    <a href="#projects"   class="mobile-nav-link"><i class="fas fa-folder-open"></i>Projects</a>
+                    <a href="#education"  class="mobile-nav-link"><i class="fas fa-graduation-cap"></i>Education</a>
+                    <a href="#contact"    class="mobile-nav-link"><i class="fas fa-envelope"></i>Contact</a>
+                    <div class="mt-2 pt-2 border-t border-white/5">
+                        <a href="MD_Fahim_Munshi_CV.pdf" download class="btn-primary w-full justify-center text-sm py-2.5">
+                            <i class="fas fa-download mr-2"></i>Download CV
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

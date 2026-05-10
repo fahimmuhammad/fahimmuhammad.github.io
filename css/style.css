@@ -86,12 +86,21 @@ body {
     border-color: rgba(255,255,255,0.13);
 }
 
-.glass-nav {
-    background: rgba(5, 9, 20, 0.75);
+.nav-pill {
+    background: rgba(5, 9, 20, 0.82);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    overflow: hidden;
+    transition: box-shadow 0.3s, border-color 0.3s;
 }
+
+@media (max-width: 767px) {
+    .nav-pill { border-radius: 18px; }
+}
+
+section[id] { scroll-margin-top: 84px; }
 
 /* ═══════════════════════════════════════
    GRADIENT TEXT
