@@ -12,13 +12,17 @@
     --glass-hover:  rgba(255, 255, 255, 0.07);
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
 
 body {
     font-family: 'Space Grotesk', sans-serif;
     background-color: var(--dark);
     color: #f1f5f9;
     overflow-x: hidden;
+    min-width: 320px;
 }
 
 /* Custom scrollbar */
@@ -151,33 +155,46 @@ body {
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
-    position: relative;
-    padding-bottom: 2px;
-    transition: color 0.25s;
+    padding: 0.38rem 0.9rem;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    transition: color 0.25s, background 0.25s, border-color 0.25s;
 }
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px; left: 0;
-    width: 0; height: 2px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 2px;
-    transition: width 0.3s;
+.nav-link:hover {
+    color: #f1f5f9;
+    background: rgba(255, 255, 255, 0.07);
 }
-.nav-link:hover, .nav-link.active { color: #f1f5f9; }
-.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active {
+    color: #a5b4fc;
+    background: rgba(99, 102, 241, 0.12);
+    border-color: rgba(99, 102, 241, 0.28);
+}
 
 .mobile-nav-link {
-    display: block;
-    padding: 0.6rem 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
     color: #94a3b8;
     text-decoration: none;
-    font-size: 0.9rem;
-    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: color 0.2s, background 0.2s;
+}
+.mobile-nav-link:hover {
+    color: #f1f5f9;
+    background: rgba(255, 255, 255, 0.07);
+}
+.mobile-nav-link i {
+    width: 18px;
+    text-align: center;
+    color: var(--primary);
+    font-size: 0.8rem;
+    flex-shrink: 0;
     transition: color 0.2s;
 }
-.mobile-nav-link:hover { color: #f1f5f9; }
-.mobile-nav-link:last-of-type { border-bottom: none; }
+.mobile-nav-link:hover i { color: var(--secondary); }
 
 /* ═══════════════════════════════════════
    HERO AVATAR
