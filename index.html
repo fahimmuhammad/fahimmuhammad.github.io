@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD. Fahim Munshi | Portfolio</title>
+    <meta name="description" content="Portfolio of MD. Fahim Munshi — Web Developer, Software Engineer, ML & Cybersecurity Enthusiast based in Dhaka, Bangladesh.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animate on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#06b6d4',
+                        dark: '#050914',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#050914] text-slate-100 font-sans overflow-x-hidden">
+
+    <!-- ── Animated Background: Blobs + Neural Network + Code Particles ── -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <canvas id="bgCanvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         NAVIGATION
+    ══════════════════════════════════════════ -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="text-xl font-bold gradient-text tracking-wider">FM</a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center gap-7">
+                    <a href="#about"      class="nav-link">About</a>
+                    <a href="#skills"     class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects"   class="nav-link">Projects</a>
+                    <a href="#education"  class="nav-link">Education</a>
+                    <a href="#contact"    class="nav-link">Contact</a>
+                    <a href="MD_Fahim_Munshi_CV.pdf" download class="btn-primary text-sm px-5 py-2">
+                        <i class="fas fa-download mr-2"></i>CV
+                    </a>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <button id="menuBtn" class="md:hidden text-slate-300 hover:text-white transition-colors">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mx-4 mb-3">
+            <div class="glass-card rounded-2xl flex flex-col p-4 gap-1">
+                <a href="#about"      class="mobile-nav-link">About</a>
+                <a href="#skills"     class="mobile-nav-link">Skills</a>
+                <a href="#experience" class="mobile-nav-link">Experience</a>
+                <a href="#projects"   class="mobile-nav-link">Projects</a>
+                <a href="#education"  class="mobile-nav-link">Education</a>
+                <a href="#contact"    class="mobile-nav-link">Contact</a>
+                <a href="MD_Fahim_Munshi_CV.pdf" download class="btn-primary text-center mt-2">
+                    <i class="fas fa-download mr-2"></i>Download CV
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center pt-16 px-4 relative">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-14">
+
+                <!-- Text -->
+                <div class="flex-1 text-center lg:text-left" data-aos="fade-right" data-aos-duration="900">
+                    <div class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm text-secondary mb-6">
+                        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        Open to new opportunities
+                    </div>
+
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+                        MD. Fahim<br>
+                        <span class="gradient-text">Munshi</span>
+                    </h1>
+
+                    <div class="text-xl md:text-2xl text-slate-400 mb-6 h-9 flex items-center gap-2 justify-center lg:justify-start">
+                        <span class="text-secondary">&gt;</span>
+                        <span id="typed"></span>
+                    </div>
+
+                    <p class="text-slate-400 max-w-lg mb-8 text-base md:text-lg leading-relaxed mx-auto lg:mx-0">
+                        Computer Science graduate passionate about crafting elegant web experiences and exploring the frontiers of AI &amp; Cybersecurity.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
+                        <a href="#projects" class="btn-primary">
+                            <i class="fas fa-code mr-2"></i>View Projects
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            <i class="fas fa-envelope mr-2"></i>Contact Me
+                        </a>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex gap-3 justify-center lg:justify-start">
+                        <a href="https://linkedin.com/in/md-fahim-munshi" target="_blank" rel="noopener" class="social-icon" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/fahimmuhammad" target="_blank" rel="noopener" class="social-icon" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:fahim1996.df@gmail.com" class="social-icon" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+8801521437191" class="social-icon" title="Phone">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Avatar -->
+                <div class="flex-shrink-0" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+                    <div class="hero-avatar">
+                        <div class="avatar-ring ring-outer"></div>
+                        <div class="avatar-ring ring-inner"></div>
+                        <div class="avatar-core">
+                            <span class="text-5xl font-bold gradient-text select-none">FM</span>
+                        </div>
+                        <!-- Floating badges -->
+                        <div class="float-badge badge-top">
+                            <i class="fas fa-code text-primary mr-1"></i>Web Dev
+                        </div>
+                        <div class="float-badge badge-bottom">
+                            <i class="fas fa-shield-halved text-secondary mr-1"></i>CyberSec
+                        </div>
+                        <div class="float-badge badge-right">
+                            <i class="fas fa-brain text-violet-400 mr-1"></i>ML
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-slate-600 hover:text-secondary transition-colors">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════════ -->
+    <section id="about" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-eyebrow">Who I Am</p>
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-14">
+
+                <!-- Bio Card -->
+                <div data-aos="fade-right" data-aos-delay="100">
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h3 class="text-2xl font-bold mb-4">Hello, World!</h3>
+                        <p class="text-slate-400 leading-relaxed mb-4">
+                            I'm a Computer Science graduate from <span class="text-slate-200 font-medium">Independent University, Bangladesh</span>, with a passion for crafting modern web experiences. From teaching web design at LEDP to interning as a Web Developer at Sinovista Bangladesh, I've built real-world skills across the full stack.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            As Web Master of the IUB ACM Student Chapter and a Programming Competition winner, I enjoy leading, mentoring, and solving hard problems. I'm currently leveling up in <span class="text-secondary font-medium">Data Science</span> and <span class="text-secondary font-medium">Ethical Hacking</span>.
+                        </p>
+                        <blockquote class="border-l-2 border-primary pl-4 italic text-slate-400 text-sm mb-6">
+                            "The only way to do great work is to love what you do." — Steve Jobs
+                        </blockquote>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="info-item">
+                                <span class="info-label"><i class="fas fa-map-marker-alt mr-1 text-primary"></i>Location</span>
+                                <span class="info-value">Dhaka, Bangladesh</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label"><i class="fas fa-graduation-cap mr-1 text-primary"></i>Degree</span>
+                                <span class="info-value">BSc Computer Science</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label"><i class="fas fa-envelope mr-1 text-primary"></i>Email</span>
+                                <span class="info-value break-all">fahim1996.df@gmail.com</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label"><i class="fas fa-language mr-1 text-primary"></i>Languages</span>
+                                <span class="info-value">Bangla, English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 gap-5" data-aos="fade-left" data-aos-delay="200">
+                    <div class="stat-card glass-card p-6 rounded-2xl text-center">
+                        <div class="stat-number gradient-text">7+</div>
+                        <div class="stat-label">Years Learning</div>
+                    </div>
+                    <div class="stat-card glass-card p-6 rounded-2xl text-center">
+                        <div class="stat-number gradient-text">3+</div>
+                        <div class="stat-label">Projects Built</div>
+                    </div>
+                    <div class="stat-card glass-card p-6 rounded-2xl text-center">
+                        <div class="stat-number gradient-text">4+</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-card glass-card p-6 rounded-2xl text-center">
+                        <div class="stat-number gradient-text">2</div>
+                        <div class="stat-label">Work Experiences</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SKILLS
+    ══════════════════════════════════════════ -->
+    <section id="skills" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-eyebrow">What I Know</p>
+                <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+
+                <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="50">
+                    <div class="skill-card-header">
+                        <div class="icon-box"><i class="fas fa-code"></i></div>
+                        <h3 class="text-base font-semibold">Programming</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-card-header">
+                        <div class="icon-box"><i class="fas fa-globe"></i></div>
+                        <h3 class="text-base font-semibold">Web Development</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">WordPress</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
+                    <div class="skill-card-header">
+                        <div class="icon-box"><i class="fas fa-screwdriver-wrench"></i></div>
+                        <h3 class="text-base font-semibold">Tools & Platforms</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">LaTeX</span>
+                        <span class="skill-tag">MS Office</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="50">
+                    <div class="skill-card-header">
+                        <div class="icon-box cyan"><i class="fas fa-brain"></i></div>
+                        <h3 class="text-base font-semibold">Machine Learning <span class="text-xs text-secondary font-normal">(Learning)</span></h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag cyan">Data Science</span>
+                        <span class="skill-tag cyan">Machine Learning</span>
+                        <span class="skill-tag cyan">Data Analysis</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-card-header">
+                        <div class="icon-box cyan"><i class="fas fa-shield-halved"></i></div>
+                        <h3 class="text-base font-semibold">Cybersecurity <span class="text-xs text-secondary font-normal">(Learning)</span></h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag cyan">Ethical Hacking</span>
+                        <span class="skill-tag cyan">Cyber Security</span>
+                        <span class="skill-tag cyan">Network Security</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
+                    <div class="skill-card-header">
+                        <div class="icon-box"><i class="fas fa-users"></i></div>
+                        <h3 class="text-base font-semibold">Soft Skills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Adaptability</span>
+                        <span class="skill-tag">Problem-solving</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         EXPERIENCE
+    ══════════════════════════════════════════ -->
+    <section id="experience" class="py-24 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-eyebrow">Where I've Worked</p>
+                <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="mt-14 timeline-wrap">
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="50">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-2xl timeline-card">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <div>
+                                <h3 class="text-lg font-bold">Web Developer (Intern)</h3>
+                                <p class="text-primary text-sm font-medium">Sinovista Bangladesh Limited · Dhaka</p>
+                            </div>
+                            <span class="badge-date">Sep 2025 – Jan 2026</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Supported development of web applications using HTML, CSS, Tailwind CSS, JavaScript, PHP, and MySQL. Collaborated with the team to implement responsive UI components and fix bugs in existing modules.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="skill-tag-sm">Tailwind CSS</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                            <span class="skill-tag-sm">PHP</span>
+                            <span class="skill-tag-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-2xl timeline-card">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <div>
+                                <h3 class="text-lg font-bold">Trainer of Web Design</h3>
+                                <p class="text-primary text-sm font-medium">Learning & Earning Development Project (LEDP)</p>
+                            </div>
+                            <span class="badge-date">Jul 2020 – Jan 2021</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Taught HTML, CSS, Bootstrap, basic JavaScript, and WordPress to trainees, empowering them with practical, job-ready web development skills.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="skill-tag-sm">HTML/CSS</span>
+                            <span class="skill-tag-sm">Bootstrap</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                            <span class="skill-tag-sm">WordPress</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-2xl timeline-card">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <div>
+                                <h3 class="text-lg font-bold">Web Master &amp; Founding Executive</h3>
+                                <p class="text-primary text-sm font-medium">IUB ACM Student Chapter</p>
+                            </div>
+                            <span class="badge-date">2022 – Present</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Maintained and updated the chapter's web presence and online content. Supported event and program promotions as a Founding Executive Body Member.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-2xl timeline-card">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <div>
+                                <h3 class="text-lg font-bold">C++ Workshop Mentor</h3>
+                                <p class="text-primary text-sm font-medium">Dept. of CSE, Independent University, Bangladesh</p>
+                            </div>
+                            <span class="badge-date">2018 – 2019</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Conducted C++ workshops for junior students, covering fundamental syntax, problem-solving techniques, and best practices.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="skill-tag-sm">C++</span>
+                            <span class="skill-tag-sm">Teaching</span>
+                            <span class="skill-tag-sm">Mentoring</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PROJECTS
+    ══════════════════════════════════════════ -->
+    <section id="projects" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-eyebrow">What I've Built</p>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+
+                <!-- PawVerse -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                    <div class="project-thumb bg-gradient-to-br from-violet-950 to-indigo-900">
+                        <i class="fas fa-paw project-thumb-icon"></i>
+                        <div class="project-thumb-overlay">
+                            <span class="text-white font-semibold text-sm">View Project</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold">PawVerse</h3>
+                            <span class="project-type">Web App</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Online platform for browsing pet products and requesting veterinary services, featuring a clean user experience and admin panel.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag-sm">HTML/CSS</span>
+                            <span class="skill-tag-sm">Tailwind</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                            <span class="skill-tag-sm">PHP</span>
+                            <span class="skill-tag-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MindEase -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-thumb bg-gradient-to-br from-cyan-950 to-teal-900">
+                        <i class="fas fa-brain project-thumb-icon"></i>
+                        <div class="project-thumb-overlay">
+                            <span class="text-white font-semibold text-sm">View Project</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold">MindEase</h3>
+                            <span class="project-type">AI Web App</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            AI-assisted web app for stress detection and coping support. Collects user inputs and provides personalized insights and suggestions.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag-sm">PHP</span>
+                            <span class="skill-tag-sm">MySQL</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                            <span class="skill-tag-sm">AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demand & Supply -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                    <div class="project-thumb bg-gradient-to-br from-rose-950 to-pink-900">
+                        <i class="fas fa-chart-line project-thumb-icon"></i>
+                        <div class="project-thumb-overlay">
+                            <span class="text-white font-semibold text-sm">View Project</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold">Demand &amp; Supply Analysis</h3>
+                            <span class="project-type">Data Viz</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Web interface to visualize demand and supply patterns for meat products using interactive data charts.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag-sm">HTML/CSS</span>
+                            <span class="skill-tag-sm">Tailwind</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                            <span class="skill-tag-sm">PHP</span>
+                            <span class="skill-tag-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HostelPro -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://github.com/fahimmuhammad/hostelpro" target="_blank" rel="noopener">
+                        <div class="project-thumb bg-gradient-to-br from-blue-950 to-sky-900">
+                            <i class="fas fa-hotel project-thumb-icon"></i>
+                            <div class="project-thumb-overlay">
+                                <span class="text-white font-semibold text-sm">View on GitHub</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold">HostelPro</h3>
+                            <span class="project-type">Web App</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Full-stack hostel booking platform with search &amp; filters, user dashboards, AJAX-powered wishlist, and a comprehensive admin panel for managing properties and reservations.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag-sm">PHP</span>
+                            <span class="skill-tag-sm">MySQL</span>
+                            <span class="skill-tag-sm">Bootstrap 5</span>
+                            <span class="skill-tag-sm">Tailwind</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SecurePark -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://github.com/fahimmuhammad/securepark" target="_blank" rel="noopener">
+                        <div class="project-thumb bg-gradient-to-br from-amber-950 to-orange-900">
+                            <i class="fas fa-square-parking project-thumb-icon"></i>
+                            <div class="project-thumb-overlay">
+                                <span class="text-white font-semibold text-sm">View on GitHub</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold">SecurePark</h3>
+                            <span class="project-type">Web App</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Full-stack car parking management system with real-time slot availability, reservations with automatic pricing, booking history, receipt generation, and an admin panel for managing slots, bookings, and users.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag-sm">PHP</span>
+                            <span class="skill-tag-sm">MySQL</span>
+                            <span class="skill-tag-sm">Bootstrap 5</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                            <span class="skill-tag-sm">REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ChannelBDN -->
+                <div class="project-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                    <a href="https://github.com/fahimmuhammad/channelbdn" target="_blank" rel="noopener">
+                        <div class="project-thumb bg-gradient-to-br from-emerald-950 to-green-900">
+                            <i class="fas fa-newspaper project-thumb-icon"></i>
+                            <div class="project-thumb-overlay">
+                                <span class="text-white font-semibold text-sm">View on GitHub</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-bold">ChannelBDN</h3>
+                            <span class="project-type">News Portal</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Bangla news portal with admin dashboard, reader profiles, bookmarking, emoji reactions, weather data for all 8 divisions, and light/dark mode support.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag-sm">PHP</span>
+                            <span class="skill-tag-sm">MySQL</span>
+                            <span class="skill-tag-sm">JavaScript</span>
+                            <span class="skill-tag-sm">CSS3</span>
+                            <span class="skill-tag-sm">Open-Meteo API</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         EDUCATION & CERTIFICATIONS
+    ══════════════════════════════════════════ -->
+    <section id="education" class="py-24 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-eyebrow">My Background</p>
+                <h2 class="section-title">Education & <span class="gradient-text">Certifications</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-14">
+
+                <!-- Education -->
+                <div data-aos="fade-right" data-aos-delay="50">
+                    <h3 class="subsection-heading">
+                        <i class="fas fa-graduation-cap text-primary"></i> Education
+                    </h3>
+                    <div class="space-y-4 mt-5">
+                        <div class="glass-card p-5 rounded-2xl">
+                            <div class="flex flex-wrap justify-between gap-2">
+                                <div>
+                                    <h4 class="font-bold">BSc in Computer Science</h4>
+                                    <p class="text-primary text-sm mt-0.5">Independent University, Bangladesh</p>
+                                </div>
+                                <span class="badge-date text-xs">2018 – 2025</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl">
+                            <div class="flex flex-wrap justify-between gap-2">
+                                <div>
+                                    <h4 class="font-bold">Higher Secondary Certificate (Science)</h4>
+                                    <p class="text-primary text-sm mt-0.5">Dhaka College</p>
+                                </div>
+                                <span class="badge-date text-xs">2014 – 2016</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl">
+                            <div class="flex flex-wrap justify-between gap-2">
+                                <div>
+                                    <h4 class="font-bold">Secondary School Certificate (Science)</h4>
+                                    <p class="text-primary text-sm mt-0.5">St. Gregory's High School</p>
+                                </div>
+                                <span class="badge-date text-xs">2014</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Awards -->
+                    <h3 class="subsection-heading mt-8">
+                        <i class="fas fa-trophy text-amber-400"></i> Awards
+                    </h3>
+                    <div class="space-y-4 mt-5">
+                        <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                            <div class="award-icon"><i class="fas fa-medal"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Intra IUB Programming Competition Winner</h4>
+                                <p class="text-slate-400 text-xs">Independent University, Bangladesh · 2018</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                            <div class="award-icon"><i class="fas fa-star"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Founding Executive Body Member</h4>
+                                <p class="text-slate-400 text-xs">IUB ACM Student Chapter · 2022 – Present</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div data-aos="fade-left" data-aos-delay="100">
+                    <h3 class="subsection-heading">
+                        <i class="fas fa-certificate text-secondary"></i> Certifications
+                    </h3>
+                    <div class="space-y-4 mt-5">
+                        <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                            <div class="cert-icon"><i class="fas fa-code"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Web Design</h4>
+                                <p class="text-slate-400 text-xs">CodersTrust Bangladesh · 2018</p>
+                            </div>
+                            <span class="ml-auto badge-done">Done</span>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                            <div class="cert-icon"><i class="fab fa-js"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Programming with Modern JavaScript</h4>
+                                <p class="text-slate-400 text-xs">Bohubrihi · 2024</p>
+                            </div>
+                            <span class="ml-auto badge-done">Done</span>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                            <div class="cert-icon cyan"><i class="fas fa-shield-halved"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Cyber Security & Ethical Hacking</h4>
+                                <p class="text-slate-400 text-xs">Ostad · Currently Enrolled</p>
+                            </div>
+                            <span class="ml-auto badge-ongoing">Ongoing</span>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+                            <div class="cert-icon cyan"><i class="fas fa-chart-bar"></i></div>
+                            <div>
+                                <h4 class="font-bold text-sm">Data Science</h4>
+                                <p class="text-slate-400 text-xs">CodeBasics · Currently Enrolled</p>
+                            </div>
+                            <span class="ml-auto badge-ongoing">Ongoing</span>
+                        </div>
+                    </div>
+
+                    <!-- Seminars -->
+                    <h3 class="subsection-heading mt-8">
+                        <i class="fas fa-chalkboard-user text-violet-400"></i> Seminars & Workshops
+                    </h3>
+                    <div class="space-y-3 mt-5">
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                            <i class="fas fa-circle-dot text-primary text-xs flex-shrink-0"></i>
+                            <span class="text-slate-300 text-sm">AI &amp; ML Seminars — CCDS, IUB (Participant)</span>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                            <i class="fas fa-circle-dot text-primary text-xs flex-shrink-0"></i>
+                            <span class="text-slate-300 text-sm">Programming Seminars — IUB ACM Student Chapter (Participant)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════════ -->
+    <section id="contact" class="py-24 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-eyebrow">Let's Talk</p>
+                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="section-divider"></div>
+                <p class="text-slate-400 mt-5 max-w-xl mx-auto text-base">
+                    I'm currently open to new opportunities. Whether you have a project in mind, a question, or just want to say hi — my inbox is always open!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-12">
+                <a href="mailto:fahim1996.df@gmail.com" class="contact-card glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="50">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3 class="font-semibold mt-4 mb-1">Email</h3>
+                    <p class="text-slate-400 text-xs">fahim1996.df@gmail.com</p>
+                </a>
+                <a href="https://linkedin.com/in/md-fahim-munshi" target="_blank" rel="noopener" class="contact-card glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                    <h3 class="font-semibold mt-4 mb-1">LinkedIn</h3>
+                    <p class="text-slate-400 text-xs">md-fahim-munshi</p>
+                </a>
+                <a href="tel:+8801521437191" class="contact-card glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h3 class="font-semibold mt-4 mb-1">Phone</h3>
+                    <p class="text-slate-400 text-xs">+880 1521 437 191</p>
+                </a>
+            </div>
+
+            <div class="mt-12" data-aos="fade-up" data-aos-delay="200">
+                <a href="mailto:fahim1996.df@gmail.com" class="btn-primary text-base px-10 py-4">
+                    <i class="fas fa-paper-plane mr-2"></i>Say Hello
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════ -->
+    <footer class="py-8 px-4 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-slate-500 text-sm">© 2026 MD. Fahim Munshi · All rights reserved.</p>
+            <div class="flex gap-3">
+                <a href="https://linkedin.com/in/md-fahim-munshi" target="_blank" rel="noopener" class="social-icon-sm" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/fahimmuhammad" target="_blank" rel="noopener" class="social-icon-sm" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:fahim1996.df@gmail.com" class="social-icon-sm" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ── Scripts ── -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
